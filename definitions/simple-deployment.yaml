@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: aks-helloworld
+  name: aks-helloworld
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aks-helloworld
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: aks-helloworld
+    spec:
+      containers:
+      - image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        name: aks-helloworld
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+        resources: {}
+status: {}
