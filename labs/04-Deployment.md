@@ -1,4 +1,4 @@
-# Run a Pod
+# Create a deployment
 
 # Create a namespace
 ```
@@ -29,7 +29,7 @@ kubectl get pods --namespace=[MY-NAMESPACE] -o wide -w
 Delete a pod from deployment and watch it, a new instance should start immediately
 
 ```
-kubectl delete  pod [name] --namespace=[MY-NAMESPACE]
+kubectl delete pod [name] --namespace=[MY-NAMESPACE]
 ```
 
 ## Temporary container to test it

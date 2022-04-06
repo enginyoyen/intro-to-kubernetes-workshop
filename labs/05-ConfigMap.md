@@ -1,6 +1,5 @@
 # Config Maps
-
-* Create a config-map and assign as an environment variable
+* Create a config-map and assign as an environment variable to a container
 
 ## Create a deployment 
 This creates a deployment and deployment definition already has environment variable assigned
