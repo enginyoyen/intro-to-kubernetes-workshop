@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: shell
+  name: shell
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shell
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: shell
+    spec:
+      volumes:
+      - name: config-volume
+        configMap:
+          name: workshop
+      - name: kube-cf-volume
+        secret:
+          secretName: kube-config
+      containers:
+      - image: [YOUR-IMAGE-NAME]
+        imagePullPolicy: IfNotPresent
+        name: shell
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        env:
+        - name: CREDENTIAL
+          valueFrom:
+            secretKeyRef:
+              name: terminal-credentials
+              key: CREDENTIAL
+        volumeMounts:
+        - name: config-volume
+          mountPath: /workshop
+        - name: kube-cf-volume
+          mountPath: /root/.kube/
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

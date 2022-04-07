@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shell-ingress
+spec:
+  tls:
+    - hosts:
+        - shell.azure.enginyoyen.com
+      secretName: ey-cert
+  ingressClassName: nginx
+  rules:
+  - host: shell.azure.enginyoyen.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: shell
+            port:
+              number: 8080
