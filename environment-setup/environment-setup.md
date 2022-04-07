@@ -4,10 +4,10 @@ Workshop environment consist of two kubernetes clusters and container registry:
 * target-cluster: Which participant will interact via kubectl and deploy workload
 * shell-cluster: Which a shell container prepared via kubectl to connect target-cluster. Shell container is exposed via nginx-ingress controller. 
 
-![Environment Overview](img/environment-setup.png)
+![Environment Overview](../img/environment-setup.png)
 
 Shell over browser:
-![Shell over browser](img/shell-sample.gif)
+![Shell over browser](../img/shell-sample.gif)
 
 
 ## Setting up the shell cluster
@@ -76,7 +76,7 @@ kubectl create secret generic terminal-credentials \
 ```
 
 ## Deploying shell
-You do need to build the container image before, you can use the [Dockerfile](./Dockerfile) in this repository to build it. Once it is build, you can replace it the image url in the [shell.yaml](shell.yaml)
+You do need to build the container image before, you can use the [Dockerfile](../Dockerfile) in this repository to build it. Once it is build, you can replace it the image url in the [shell.yaml](shell.yaml)
 
 Add the image url add create the deployment and expose it as a service:
 ```
