@@ -23,7 +23,8 @@ Labs
 Labs
 * [Pods: creating and managing pods](labs/03-Pods.md)
 * [Deployment](labs/04-Deployment.md)
-* [ConfigMap](labs/05-ConfigMap.md)
+* [ConfigMaps](labs/05-ConfigMaps.md)
+* [Mount ConfigMaps to a Pod](labs/06-MountConfigMaps.md)
 
 
 ## Workshop environment
