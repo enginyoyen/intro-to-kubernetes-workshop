@@ -1,10 +1,15 @@
 # Config Maps
 * Create a config-map and assign as an environment variable to a container
 
-## Create a deployment 
-This creates a deployment and deployment definition already has environment variable assigned
+# Create a namespace
 ```
-kubectl apply -f https://github.com/enginyoyen/intro-to-kubernetes-workshop/blob/main/definitions/simple-deployment.yaml \
+kubectl create namespace [MY-NAMESPACE]
+```
+
+## Create a pod 
+This creates a pod and definition already has environment variable assigned
+```
+kubectl apply -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/pod-with-env-var.yaml \
   --namespace=[MY-NAMESPACE]
 ``` 
 
@@ -22,10 +27,10 @@ kubectl get configmaps my-config  \
 ```
 
 
-## Edit deployment and change the load the environment variable from config-map
+## Edit pod and change the load the environment variable from config-map
 
 ```
-kubectl edit deployments --namespace=[MY-NAMESPACE]
+kubectl edit pod aks-helloworld --namespace=[MY-NAMESPACE]
 ```
 
 Replace env section:
@@ -58,6 +63,19 @@ with this:
               key: PageTitle
 ```
 
+or delete and apply with configMap definition:
+
+```
+kubectl delete pod aks-helloworld  --force  -n=eng
+kubectl apply -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/pod-with-config-maps.yaml \
+  --namespace=[MY-NAMESPACE]
+``` 
+
+
+## Get the IP address of an Pod
+```
+kubectl get pods --namespace=[MY-NAMESPACE] -o wide
+```
 
 ## Temporary container to test it
 ```
@@ -68,7 +86,21 @@ kubectl run temp-pod   \
   -it -- /bin/sh
 ```
 
+Check the title:
 ```
-wget -O - IP:80 > /dev/null
+wget -O - IP:80
 ```
 
+## Clean Up
+```
+kubectl delete pod aks-helloworld --namespace=[MY-NAMESPACE]
+kubectl delete configmap my-config  \
+  --namespace=[MY-NAMESPACE]
+```
+or
+
+
+```
+kubectl delete -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/pod-with-config-maps.yaml \
+  --namespace=[MY-NAMESPACE]
+```
