@@ -25,6 +25,7 @@ Labs
 * [Deployment](labs/04-Deployment.md)
 * [ConfigMaps](labs/05-ConfigMaps.md)
 * [Mount ConfigMaps to a Pod](labs/06-MountConfigMaps.md)
+* [Using Azure Key Vault with AKS](labs/07-AzureKeyVault.md)
 
 
 ## Workshop environment

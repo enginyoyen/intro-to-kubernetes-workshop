@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: aks-helloworld
+  name: aks-helloworld
+spec:
+  containers:
+  - image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+    name: aks-helloworld
+    ports:
+    - containerPort: 80
+    env:
+     - name: TITLE
+       valueFrom:
+        secretKeyRef:
+          name: appsecrets
+          key: mysecret
+    volumeMounts:
+     - name: secret-store-volume
+       mountPath: "/mnt/secrets-store"
+       readOnly: true
+    resources: {}
+  volumes:
+    - name: secret-store-volume
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "azure-kvname-system-msi"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
