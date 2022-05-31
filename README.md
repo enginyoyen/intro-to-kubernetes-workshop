@@ -26,6 +26,7 @@ Labs
 * [ConfigMaps](labs/05-ConfigMaps.md)
 * [Mount ConfigMaps to a Pod](labs/06-MountConfigMaps.md)
 * [Using Azure Key Vault with AKS](labs/07-AzureKeyVault.md)
+* [ Persistent Volume Claims](labs/08-PersistentVolumeClaims.md)
 
 
 ## Workshop environment

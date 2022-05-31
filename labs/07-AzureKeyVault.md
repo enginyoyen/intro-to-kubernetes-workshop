@@ -1,5 +1,5 @@
 # Using Azure Key Vault with AKS
-Create a secret in Azue Key Vault and expose via CSI Driver. 
+Create a secret in Azure Key Vault and expose via CSI Driver. 
 
 PS: This lab assumes you have a AKS with Secrets Store CSI Driver and KeyVault is already set up, if not see the: https://docs.microsoft.com/en-us/azure/aks/csi-secrets-store-driver
 
