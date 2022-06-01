@@ -89,6 +89,10 @@ kubectl get pvc --namespace=eng
 ```
 
 
+## Check the Storage Class
+```
+kubectl get sc
+```
 
 ## Clean Up
 ```
@@ -100,15 +104,8 @@ or
 
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/pod-with-keyvault-csi-driver-sync.yaml \
-  --namespace=[MY-NAMESPACE]
+kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/nginx-pod-azuredisk.yaml \
+  --namespace=[MY-NAMESPACE] --force
 
 kubectl delete -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/secret-provider-class.yml --namespace=[MY-NAMESPACE]
-```
-
-
-# Check the Secrets again
-Secrets should also be removed, as the pods that are using the secret are gone.
-```
-kubectl get secrets --namespace=[MY-NAMESPACE]
 ```

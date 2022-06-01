@@ -6,13 +6,6 @@
 kubectl create namespace [MY-NAMESPACE]
 ```
 
-## Create a pod 
-This creates a pod and definition already has environment variable assigned
-```
-kubectl apply -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/pod-with-env-var.yaml \
-  --namespace=[MY-NAMESPACE]
-``` 
-
 ## Create Config Map
 ```
 kubectl create configmap my-config  \
@@ -29,9 +22,6 @@ kubectl get configmaps my-config  \
 
 ## Edit pod and change the load the environment variable from config-map
 
-```
-kubectl edit pod aks-helloworld --namespace=[MY-NAMESPACE]
-```
 
 Replace env section:
 ```
@@ -63,10 +53,9 @@ with this:
               key: PageTitle
 ```
 
-or delete and apply with configMap definition:
+or create the pod from definition file
 
 ```
-kubectl delete pod aks-helloworld  --force  -n=eng
 kubectl apply -f https://raw.githubusercontent.com/enginyoyen/intro-to-kubernetes-workshop/main/definitions/pod-with-config-maps.yaml \
   --namespace=[MY-NAMESPACE]
 ``` 
